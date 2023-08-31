@@ -34,7 +34,7 @@ class set_up():
         return self.data["pages"]
 
 
-settings = set_up("config.yaml")
+settings = set_up("Test/config.yaml")
 
 
 @pytest.fixture(scope = "session")

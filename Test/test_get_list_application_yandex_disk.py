@@ -11,7 +11,6 @@ def test_get_list_application(url, headers, pages):
         for _ in range(len(response["_embedded"]["items"])):
             data_path = response["_embedded"]["items"][_]["path"]
             path_list.append(data_path[data_path.find("disk:/") + 5:])
-    
     assert sorted(path_list)
         
 
