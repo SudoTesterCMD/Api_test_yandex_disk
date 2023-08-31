@@ -4,6 +4,8 @@ credentials :
 
 pages :
   resourses :
+    base : "/resources?path="
+    application : "/resources?path=%2F"
     copy : "/resources/copy"
     download : "/resources/download" 
     files : "/resources/files"

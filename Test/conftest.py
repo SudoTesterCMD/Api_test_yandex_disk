@@ -19,7 +19,7 @@ class set_up():
             sys.exit(0)
 
 
-    def get_url(self):
+    def get_base_url(self):
         return self.data["credentials"]["base_url"]
 
     def get_headers(self):
@@ -27,28 +27,29 @@ class set_up():
         data_headers["Authorization"] = f'{data_headers["Authorization"]} {self.data["credentials"]["Oauth"]}'
         return data_headers
     
-    def get_pages(self):
-        return self.data["pages"]
-
     def get_user(self):
         return self.data["user"]
+    
+    def get_pages(self):
+        return self.data["pages"]
 
 
 settings = set_up("config.yaml")
 
 
-@pytest.fixture(scope = "function")
+@pytest.fixture(scope = "session")
 def url():
-    return settings.get_url()
+    return settings.get_base_url()
 
-@pytest.fixture(scope = "function")
+@pytest.fixture(scope = "session")
 def headers():
     return settings.get_headers()
+
+@pytest.fixture(scope = "function")
+def user():
+    return settings.get_user()
 
 @pytest.fixture(scope = "function")
 def pages():
     return settings.get_pages()
 
-@pytest.fixture(scope = "function")
-def user():
-    return settings.get_user()
